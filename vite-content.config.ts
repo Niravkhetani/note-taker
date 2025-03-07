@@ -1,14 +1,13 @@
 import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
   build:{
-    target:"esnext",
+    emptyOutDir: false, // So that popup build files don't get deleted
     rollupOptions:{
       input:{
-        popup: "./popup/index.html",
+        content: "./content_script/content-script.ts", // Entry Point
+        "content-main": "./content_script/main.ts",
       },
       output:{
         entryFileNames: "assets/[name].js"
