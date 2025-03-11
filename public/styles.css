@@ -1,0 +1,21 @@
+/* Style for highlighted text */
+.highlight-note {
+  background-color: yellow;
+  color: black;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Tooltip for Notes */
+.note-tooltip {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  display: none;
+  z-index: 1000;
+}
