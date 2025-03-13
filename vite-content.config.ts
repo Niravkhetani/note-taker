@@ -1,20 +1,32 @@
-import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { fileURLToPath } from 'url';
+import path from 'path-browserify';
+import crx from "vite-plugin-crx-mv3";
+
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export default defineConfig({
-    plugins: [react()],
-    build: {
-        outDir: "dist",
-        rollupOptions: {
-            input: {
-                popup: "./public/popup.html",
-                content: "./content_script/content.ts",
-                inject: "./content_script/inject.tsx"
-            },
-            output: {
-                entryFileNames: "[name].js"
-            }
-        }
+    plugins: [react(),crx()],
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname), // Ensure alias is set correctly
     },
-    publicDir: "public"
+  },
+  build: {
+    outDir: 'dist',
+    rollupOptions: {
+      input: {
+        popup: './public/popup.html',
+        content: './content_script/content.ts',
+        inject: './content_script/inject.tsx',
+      },
+      output: {
+        entryFileNames: '[name].js',
+      },
+    },
+  },
+  publicDir: 'public',
 });

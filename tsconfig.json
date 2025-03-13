@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["ES2020", "DOM", "DOM.Iterable","ESNext"],
+    "lib": ["ES2020", "DOM", "DOM.Iterable", "ESNext"],
     "module": "ESNext",
     "skipLibCheck": true,
 
@@ -20,7 +20,15 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
+
+    /* relative path */
+    "baseUrl": ".",
+    "paths": {
+      "@/content_script/*": ["content_script/*"]
+    },
+    "types": ["vite/client", "@types/chrome"]
   },
-  "include": ["popup","content_script","background","shared"],
+
+  "include": ["popup", "content_script", "background", "shared"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }
