@@ -31,7 +31,9 @@ const Notes: React.FC = () => {
     <Card className={classes.root}>
       <Card className={classes.container}>
         <CardContent>
-          <Typography variant="headline">📝 Quick Notes123</Typography>
+          <img
+            src={chrome.runtime.getURL('assets/svg/logo-no-background.svg')}
+          />
           <Box>
             <SettingsIcon color="customGrey" />
             <CloseIcon onClick={onCloseClicked} color="customGrey" />
