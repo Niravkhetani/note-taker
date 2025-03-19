@@ -24,6 +24,7 @@ const Notes: React.FC = () => {
   };
 
   const onCloseClicked = () => {
+    console.log('close popup');
     chrome.runtime.sendMessage({ action: 'close_popup' }); // Send message to background
   };
 
@@ -34,6 +35,7 @@ const Notes: React.FC = () => {
           <img
             src={chrome.runtime.getURL('assets/svg/logo-no-background.svg')}
           />
+          Nik Updated5
           <Box>
             <SettingsIcon color="customGrey" />
             <CloseIcon onClick={onCloseClicked} color="customGrey" />

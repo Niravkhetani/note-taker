@@ -1,24 +1,30 @@
 {
-    "manifest_version": 3,
-    "name": "React Chrome Extension",
-    "version": "1.0.0",
-    "description": "A simple React app as a Chrome extension",
-    "action": {
-      "default_title": "Action"
-    },
-    "background": {
-      "service_worker": "assets/background.js"
-    },
-    "web_accessible_resources": [{
+  "manifest_version": 3,
+  "name": "React Chrome Extension",
+  "version": "1.0.0",
+  "description": "A simple React app as a Chrome extension",
+  "action": {
+    "default_title": "Action"
+  },
+  "background": {
+    "service_worker": "assets/background.js",
+    "type": "module"
+  },
+  "web_accessible_resources": [
+    {
       "matches": ["https://*/*"],
       "resources": ["assets/*"]
-   }],
-   "permissions": ["scripting", "activeTab", "storage"],
-    "content_scripts": [
-      {
-        "matches": ["https://*/*"],
-        "js": ["inject.js"],
-        "css": ["styles.css"]
-      }
-    ]
+    }
+  ],
+  "permissions": ["scripting", "activeTab", "storage"],
+  "content_scripts": [
+    {
+      "matches": ["https://*/*"],
+      "js": ["inject.js"],
+      "css": ["styles.css"]
+    }
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
   }
+}
