@@ -28,9 +28,9 @@ declare module "@mui/material/SvgIcon" {
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#F2EEEE',
-      light: '#63a4ff',
-      dark: '#004ba0',
+      main: '#2D00D4',
+      light: '#F1EEFE',
+      dark: "#375FD4"
     },
     text: {
       primary: '#010101',
@@ -54,7 +54,7 @@ const theme = createTheme({
       main: '#4caf50',
     },
     background: {
-      default: '#f4f6f8',
+      default: '#FAFAFA',
       paper: '#ffffff',
     },
     customGrey: {
@@ -84,6 +84,9 @@ const theme = createTheme({
   typography: {
     ...typography,
   },
+  shape: {
+    borderRadius: 16
+  }
 });
 
 export default theme;

@@ -26,9 +26,6 @@ interface CustomTypographyOptions extends TypographyOptions {
     fontWeight: number;
     fontSize: string;
     lineHeight: string;
-    marginBottom: string;
-    fontFamily: string;
-    color: string;
   };
 }
 
@@ -53,12 +50,9 @@ const typography: CustomTypographyOptions = {
     marginRight: '10px',
   },
   title: {
-    fontWeight: 400,
+    fontWeight: 700,
     fontSize: '14px',
-    lineHeight: '20px',
-    marginBottom: '5px',
-    fontFamily: 'Inter',
-    color: 'text.primary',
+    lineHeight: '28px',
   },
 };
 
