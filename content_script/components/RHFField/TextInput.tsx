@@ -1,6 +1,6 @@
 import { Box, TextField, Typography, IconButton } from '@mui/material';
 import { Controller, Control, FieldValues, Path } from 'react-hook-form';
-import { Close } from '@mui/icons-material';
+import { Close, Search } from '@mui/icons-material';
 
 interface TextInputProps<T extends FieldValues> {
   name: Path<T>;
@@ -38,10 +38,16 @@ const TextInput = <T extends FieldValues>({
     name={name}
     control={control}
     render={({ field, fieldState }) => (
-      <Box sx={{ mb: marginButton }}>
-        <Typography variant="body2" sx={{ mb: 1, color: 'text.secondary' }}>
-          {label}
-        </Typography>
+      <Box
+        sx={{
+          mb: marginButton,
+        }}
+      >
+        {label && (
+          <Typography variant="body2" sx={{ mb: 1, color: 'text.secondary' }}>
+            {label}
+          </Typography>
+        )}
         <TextField
           {...field}
           type={type}
@@ -52,17 +58,34 @@ const TextInput = <T extends FieldValues>({
           multiline={multiLine}
           maxRows={maxRows}
           variant="outlined"
-          sx={{
+          sx={(theme) => ({
+            borderRadius: '8px',
             textarea: {
               minHeight: maxRows ? `${maxRows * 24}px` : 'auto',
             },
-          }}
+            '& .MuiInputBase-root': {
+              color: theme.palette.primary.main,
+              backgroundColor: '#ece6f0', // Example: change background color
+              borderRadius: `${theme.shape.borderRadius / 2}px`, // Rounded corners
+            },
+            '& .MuiOutlinedInput-root': {
+              '& fieldset': {
+                borderColor: 'transparent', // Default border color
+              },
+              '&:hover fieldset': {
+                borderColor: 'transparent', // Border color on hover
+              },
+              '&.Mui-focused fieldset': {
+                borderColor: 'transparent', // Border color when focused
+              },
+            },
+            '& .MuiInputBase-input': {
+              padding: '10px', // Padding inside input
+            },
+          })}
           slotProps={{
             input: {
-              sx: {
-                borderRadius: 2,
-                backgroundColor: 'white',
-              },
+              borderRadius: `none`,
               ...props.slotProps?.input,
               ...(isCloseIcon && {
                 endAdornment: (
@@ -71,9 +94,34 @@ const TextInput = <T extends FieldValues>({
                     edge="end"
                     sx={{
                       color: 'text.primary',
+                      borderRadius: 0,
+                      '&:focus': {
+                        outline: 'none',
+                      },
+                      '&:focus-visible': {
+                        outline: 'none',
+                      },
                     }}
                   >
                     <Close fontSize="medium" color="customGrey" />
+                  </IconButton>
+                ),
+                startAdornment: (
+                  <IconButton
+                    onClick={onTogglePasswordVisibility}
+                    edge="start"
+                    sx={{
+                      color: 'text.primary',
+                      borderRadius: 0,
+                      '&:focus': {
+                        outline: 'none',
+                      },
+                      '&:focus-visible': {
+                        outline: 'none',
+                      },
+                    }}
+                  >
+                    <Search fontSize="medium" color="customGrey" />
                   </IconButton>
                 ),
               }),

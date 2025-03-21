@@ -20,9 +20,9 @@ const SearchNotes = () => {
         >
           <TextInput
             isCloseIcon
-            label="search"
             name="searchTerm"
             control={control}
+            placeholder="Search"
           />
         </form>
       </FormProvider>

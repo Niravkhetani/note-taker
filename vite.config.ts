@@ -15,13 +15,14 @@ export default defineConfig({
       '@': path.resolve(__dirname), // Ensure alias is set correctly
     },
   },
-  build:{
-    target:"esnext",
-    rollupOptions:{
-      input:{
+  build: {
+    emptyOutDir: false, // So that popup and content build files don't get deleted
+    target: "esnext",
+    rollupOptions: {
+      input: {
         popup: "./popup/index.html",
       },
-      output:{
+      output: {
         entryFileNames: "assets/[name].js"
       }
     },

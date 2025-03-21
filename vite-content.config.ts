@@ -24,6 +24,7 @@ export default defineConfig({
   },
 
   build: {
+    emptyOutDir: false, // So that popup and content build files don't get deleted
     outDir: 'dist',
     rollupOptions: {
       input: {

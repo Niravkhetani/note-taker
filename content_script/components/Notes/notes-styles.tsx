@@ -5,8 +5,8 @@ const useStyles = makeStyles({ uniqId: 'notes' })((theme) => ({
     top: '20px',
     right: '20px',
     zIndex: 9999,
-    width: '424px',
-    height: '418px',
+    width: '500px',
+    height: '440px',
     borderRadius: '16px',
   },
   container: {

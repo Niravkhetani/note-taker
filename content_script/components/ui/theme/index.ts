@@ -13,9 +13,11 @@ declare module '@mui/material/Typography' {
 declare module "@mui/material/styles" {
   interface Palette {
     customGrey: Palette["primary"];
+    grey3: PaletteOptions["primary"];
   }
   interface PaletteOptions {
     customGrey?: PaletteOptions["primary"];
+    grey3?: PaletteOptions["primary"];
   }
 }
 
@@ -59,6 +61,9 @@ const theme = createTheme({
     },
     customGrey: {
       main: '#C7C7CC',
+    },
+    grey3: {
+      main: '#ece6f0',
     },
     common: {
       successGreen: '#56C061',
