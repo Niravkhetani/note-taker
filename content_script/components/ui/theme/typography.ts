@@ -1,5 +1,12 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
+
+declare module '@mui/material/Typography' {
+  interface TypographyPropsVariantOverrides {
+    noteTitle: true;
+    noteDescription: true
+  }
+}
 interface CustomTypographyOptions extends TypographyOptions {
   headline?: {
     fontWeight: number;
@@ -27,7 +34,22 @@ interface CustomTypographyOptions extends TypographyOptions {
     fontSize: string;
     lineHeight: string;
   };
+  noteTitle?: {
+    fontWeight: number;
+    fontSize: string;
+    lineHeight: string;
+    fontFamily: string;
+  };
+  noteDescription?: {
+    fontWeight: number;
+    fontSize: string;
+    lineHeight: string;
+    fontFamily: string;
+  };
 }
+
+// Allow using 'noteTitle' in Typography component props
+
 
 const typography: CustomTypographyOptions = {
   headline: {
@@ -54,6 +76,19 @@ const typography: CustomTypographyOptions = {
     fontSize: '14px',
     lineHeight: '28px',
   },
+  noteTitle: {
+    fontWeight: 700,
+    fontSize: '18px',
+    lineHeight: '28px',
+    fontFamily: 'Lato'
+  },
+  noteDescription: {
+    fontWeight: 400,
+    fontSize: '14px',
+    lineHeight: '18px',
+    fontFamily: 'Quicksand'
+  },
+  fontFamily: ['Roboto', 'Lato', 'Quicksand'].join(',')
 };
 
 export default typography;

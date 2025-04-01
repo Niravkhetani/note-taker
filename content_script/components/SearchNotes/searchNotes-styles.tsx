@@ -2,7 +2,7 @@ import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles({ uniqId: 'notes' })((theme) => ({
   container: {
-    mt: 4,
+    marginTop: '12px',
   },
   heading: {
     color: theme.palette.primary.dark,

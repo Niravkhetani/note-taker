@@ -1,6 +1,21 @@
 import ReactDOM from 'react-dom/client';
 import App from './App';
 
+const FontFamily = [
+  'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Quicksand:wght@300..700&display=swap',
+  'https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap',
+];
+const injectFont = () => {
+  FontFamily.map((fontFamily, idx) => {
+    if (!document.getElementById(`mui-custom-font-${idx}`)) {
+      const link = document.createElement('link');
+      link.id = 'mui-custom-font';
+      link.rel = 'stylesheet';
+      link.href = fontFamily;
+      document.head.appendChild(link);
+    }
+  });
+};
 chrome.runtime.onMessage.addListener((message) => {
   let rootDiv = document.getElementById('mui-note-taker-root');
 
@@ -26,4 +41,6 @@ chrome.runtime.onMessage.addListener((message) => {
       rootDiv.style.display = 'none';
     }
   }
+
+  injectFont();
 });

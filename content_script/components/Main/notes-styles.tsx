@@ -4,10 +4,10 @@ const useStyles = makeStyles({ uniqId: 'notes' })((theme) => ({
     position: 'fixed',
     top: '20px',
     right: '20px',
-    zIndex: 9999,
+    zIndex: 9999998,
     width: '500px',
-    height: '440px',
-    borderRadius: '16px',
+    height: '600px',
+    borderRadius: theme.shape.borderRadius,
   },
   container: {
     padding: theme.spacing(2),

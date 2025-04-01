@@ -1,7 +1,7 @@
-import { ThemeProvider } from "@mui/material";
-import React from "react";
-import theme from "./components/ui/theme";
-import Notes from "./components/Notes/Notes";
+import { ThemeProvider } from '@mui/material';
+import React from 'react';
+import theme from './components/ui/theme';
+import Notes from './components/Main/Notes';
 
 const App: React.FC = () => {
   return (

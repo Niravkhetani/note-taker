@@ -1,40 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Card, Box } from '@mui/material';
-import NoteStyle from '@/content_script/components/Notes/notes-styles';
+import NoteStyle from '@/content_script/components/Main/notes-styles';
 import SettingsIcon from '@mui/icons-material/Settings';
 import CloseIcon from '@mui/icons-material/Close';
 import Alert from '../Alert/Alert';
 import SearchNotes from '../SearchNotes/SearchNotes';
+import { Notes as FetchNotes } from '@/content_script/utils/Notes';
+import NoteList from './components/NoteList/NoteList';
 
 const Notes: React.FC = () => {
   const { classes } = NoteStyle();
-  const NotesList = [
-    {
-      id: 1,
-      title: 'This text is not valid S should be capital.',
-      description: 'I have attached description1',
-    },
-    {
-      id: 2,
-      title: 'How can i make question using this keyword?',
-      description: 'I have attached description2',
-    },
-    {
-      id: 3,
-      title: 'How to use React zod API?',
-      description: 'I have attached description3',
-    },
-    {
-      id: 4,
-      title: 'API integration is missing.',
-      description: 'I have attached description4',
-    },
-    {
-      id: 5,
-      title: 'How to use React Axios API?',
-      description: 'I have attached description5',
-    },
-  ];
+  const [isShowAlert, setShowAlert] = useState(true);
 
   const onCloseClicked = () => {
     chrome.runtime.sendMessage({ action: 'close_popup' }); // Send message to background
@@ -53,11 +29,12 @@ const Notes: React.FC = () => {
             <CloseIcon onClick={onCloseClicked} color="customGrey" />
           </Box>
         </Box>
-        <Alert title="Welcome to Note Taker" />
+        {isShowAlert && (
+          <Alert title="Welcome to Note Taker" setShowAlert={setShowAlert} />
+        )}
+
         <SearchNotes />
-        {NotesList.map((note) => (
-          <Box key={note.id}>{note.title}</Box>
-        ))}
+        <NoteList Notes={FetchNotes} />
       </Card>
     </Card>
   );
