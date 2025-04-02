@@ -1,17 +1,11 @@
 import { Note } from '@/content_script/types/Notes';
-import {
-  Box,
-  Card,
-  Divider,
-  IconButton,
-  Typography,
-  useTheme,
-} from '@mui/material';
+import { Box, Card, Divider, Typography, useTheme } from '@mui/material';
 import NoteListStyles from './noteList-styles';
 import React from 'react';
-import { default as MuiPopover } from '@mui/material/Popover';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-
+import Popover from '@/content_script/components/Popover/Popover';
+import EditIcon from '@mui/icons-material/Edit';
+import { Delete } from '@mui/icons-material';
 interface NotesProps {
   Notes: Note[];
 }
@@ -19,23 +13,27 @@ interface NotesProps {
 const NoteList = ({ Notes }: NotesProps) => {
   const { classes } = NoteListStyles();
   const theme = useTheme();
-  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
-    null,
-  );
 
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
-    console.log('Clicked button:', event.currentTarget);
-    setTimeout(() => {
-      setAnchorEl(event.currentTarget);
-    }, 0);
+  const PopoverContent = () => {
+    return (
+      <Box className={classes.popoverContainer}>
+        <Box className={classes.popoverOptions}>
+          <Box className={classes.optionsWrapper}>
+            <EditIcon fontSize="medium" color="customGrey" />
+            <Typography variant="options" color={theme.palette.text.primary}>
+              Edit
+            </Typography>
+          </Box>
+        </Box>
+        <Box className={classes.optionsWrapper}>
+          <Delete fontSize="medium" color="customGrey" />
+          <Typography color={theme.palette.text.primary} variant="options">
+            Delete
+          </Typography>
+        </Box>
+      </Box>
+    );
   };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const open = Boolean(anchorEl);
-  const id = open ? 'simple-popover' : undefined;
 
   return (
     <Card className={classes.root}>
@@ -59,34 +57,10 @@ const NoteList = ({ Notes }: NotesProps) => {
                 {note.description}
               </Typography>
             </Box>
-            <Box>
-              <IconButton onClick={handleClick}>
-                <MoreVertIcon />
-              </IconButton>
-              <MuiPopover
-                id={id}
-                open={open}
-                anchorEl={anchorEl}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: 'bottom',
-                  horizontal: 'right',
-                }}
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'center',
-                }}
-              >
-                <Box>
-                  <Typography variant="subtitle2" color="customGrey">
-                    Edit
-                  </Typography>
-                  <Typography variant="subtitle2" color="customGrey">
-                    Delete
-                  </Typography>
-                </Box>
-              </MuiPopover>
-            </Box>
+            <Popover
+              PopoverOptions={PopoverContent}
+              PopoverTrigger={MoreVertIcon}
+            />
           </Box>
           <Divider />
         </React.Fragment>

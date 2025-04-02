@@ -35,7 +35,7 @@ const theme = createTheme({
       dark: "#375FD4"
     },
     text: {
-      primary: '#010101',
+      primary: '#3F4842',
       secondary: '#5E5C5D',
     },
     secondary: {
@@ -74,6 +74,7 @@ const theme = createTheme({
       black75: '##000000b3',
       divider: '#C3C0C2',
       schedule: '#6467DC',
+      grey84: '#D6D6D6',
       gradiant: `
       linear-gradient(0deg, #FFFFFF, #FFFFFF), 
       conic-gradient(from 133.73deg at 50% 50%, 

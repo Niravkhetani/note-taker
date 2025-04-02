@@ -7,17 +7,25 @@ const FontFamily = [
 ];
 const injectFont = () => {
   FontFamily.map((fontFamily, idx) => {
-    if (!document.getElementById(`mui-custom-font-${idx}`)) {
+    if (!document.getElementById(`custom-font-${idx}`)) {
       const link = document.createElement('link');
-      link.id = 'mui-custom-font';
+      link.id = 'custom-font';
       link.rel = 'stylesheet';
       link.href = fontFamily;
       document.head.appendChild(link);
     }
   });
 };
+
+const injectStyles = () => {
+  const link = document.createElement('link');
+  link.id = 'custom-styles';
+  link.rel = 'stylesheet';
+  link.href = chrome.runtime.getURL('styles.css');
+  document.head.appendChild(link);
+};
 chrome.runtime.onMessage.addListener((message) => {
-  let rootDiv = document.getElementById('mui-note-taker-root');
+  let rootDiv = document.getElementById('note-taker-root');
 
   console.log('message', message.action);
 
@@ -27,7 +35,7 @@ chrome.runtime.onMessage.addListener((message) => {
         rootDiv.style.display === 'none' ? 'block' : 'none';
     } else {
       rootDiv = document.createElement('div');
-      rootDiv.id = 'mui-note-taker-root';
+      rootDiv.id = 'note-taker-root';
       document.body.appendChild(rootDiv);
       setTimeout(() => {
         if (rootDiv && !rootDiv.hasAttribute('data-mounted')) {
@@ -43,4 +51,5 @@ chrome.runtime.onMessage.addListener((message) => {
   }
 
   injectFont();
+  injectStyles();
 });

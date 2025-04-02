@@ -12,5 +12,6 @@ declare module '@mui/material/styles' {
     divider: string;
     schedule: string;
     gradiant: string;
+    grey84: string;
   }
 }
