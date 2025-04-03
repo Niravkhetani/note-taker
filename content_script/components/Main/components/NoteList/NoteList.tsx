@@ -19,14 +19,14 @@ const NoteList = ({ Notes }: NotesProps) => {
       <Box className={classes.popoverContainer}>
         <Box className={classes.popoverOptions}>
           <Box className={classes.optionsWrapper}>
-            <EditIcon fontSize="medium" color="customGrey" />
+            <EditIcon fontSize="medium" id="icon-hover" />
             <Typography variant="options" color={theme.palette.text.primary}>
               Edit
             </Typography>
           </Box>
         </Box>
         <Box className={classes.optionsWrapper}>
-          <Delete fontSize="medium" color="customGrey" />
+          <Delete fontSize="medium" id="icon-hover" />
           <Typography color={theme.palette.text.primary} variant="options">
             Delete
           </Typography>

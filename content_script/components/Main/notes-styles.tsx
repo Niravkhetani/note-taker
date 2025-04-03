@@ -18,5 +18,17 @@ const useStyles = makeStyles({ uniqId: 'notes' })((theme) => ({
     display: 'flex',
     justifyContent: 'space-between',
   },
+  buttonWrapper: {
+    display: 'flex',
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    marginTop: '1rem',
+    gap: theme.spacing(1),
+  },
+  icon: {
+    height: '21px',
+    width: '21px',
+    marginRight: '0.5rem',
+  },
 }));
 export default useStyles;

@@ -2,7 +2,7 @@ import { makeStyles } from 'tss-react/mui';
 
 const useStyles = makeStyles({ uniqId: 'noteList' })((theme) => ({
   root: {
-    height: '294px',
+    height: '324px',
     overflow: 'auto',
     boxShadow: 'none',
   },
@@ -40,6 +40,10 @@ const useStyles = makeStyles({ uniqId: 'noteList' })((theme) => ({
     alignItems: 'center',
     cursor: 'pointer',
     gap: theme.spacing(0.5),
+    color: theme.palette.customGrey.main,
+    '&:hover': {
+      color: theme.palette.primary.main,
+    },
   },
 }));
 

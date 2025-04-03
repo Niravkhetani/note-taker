@@ -28,7 +28,7 @@ const TextInput = <T extends FieldValues>({
   showPasswordToggle = false,
   disabled = false,
   isCloseIcon,
-  marginButton = 3,
+  marginButton = 1,
   multiLine = false,
   maxRows = multiLine ? 3 : undefined,
   onTogglePasswordVisibility,

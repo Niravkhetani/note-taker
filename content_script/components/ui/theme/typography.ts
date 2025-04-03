@@ -1,11 +1,11 @@
 import { TypographyOptions } from '@mui/material/styles/createTypography';
 
-
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     noteTitle: true;
     noteDescription: true;
     options: true;
+    paginate: true;
   }
 }
 interface CustomTypographyOptions extends TypographyOptions {
@@ -34,6 +34,7 @@ interface CustomTypographyOptions extends TypographyOptions {
     fontWeight: number;
     fontSize: string;
     lineHeight: string;
+    fontFamily: string;
   };
   noteTitle?: {
     fontWeight: number;
@@ -52,11 +53,15 @@ interface CustomTypographyOptions extends TypographyOptions {
     fontSize: string;
     lineHeight: string;
     fontFamily: string;
-  }
+  };
+  paginate?: {
+    fontWeight: number;
+    fontSize: string;
+    lineHeight: string;
+  };
 }
 
 // Allow using 'noteTitle' in Typography component props
-
 
 const typography: CustomTypographyOptions = {
   headline: {
@@ -80,28 +85,34 @@ const typography: CustomTypographyOptions = {
   },
   title: {
     fontWeight: 700,
-    fontSize: '14px',
+    fontSize: '20px',
     lineHeight: '28px',
+    fontFamily: 'Roboto',
   },
   noteTitle: {
     fontWeight: 700,
     fontSize: '18px',
     lineHeight: '28px',
-    fontFamily: 'Lato'
+    fontFamily: 'Lato',
   },
   noteDescription: {
     fontWeight: 400,
     fontSize: '14px',
     lineHeight: '18px',
-    fontFamily: 'Quicksand'
+    fontFamily: 'Quicksand',
   },
   options: {
     fontWeight: 700,
     fontSize: '16px',
     lineHeight: '18px',
-    fontFamily: 'Lato'
+    fontFamily: 'Lato',
   },
-  fontFamily: ['Roboto', 'Lato', 'Quicksand'].join(',')
+  paginate: {
+    fontWeight: 700,
+    fontSize: '11px',
+    lineHeight: '16px',
+  },
+  fontFamily: ['Roboto', 'Lato', 'Quicksand'].join(','),
 };
 
 export default typography;

@@ -1,5 +1,6 @@
-import { createTheme } from '@mui/material/styles';
+import { Components, createTheme } from '@mui/material/styles';
 import typography from './typography';
+import MuiButton from './button';
 
 declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
@@ -10,20 +11,23 @@ declare module '@mui/material/Typography' {
   }
 }
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface Palette {
-    customGrey: Palette["primary"];
-    grey3: PaletteOptions["primary"];
+    customGrey: Palette['primary'];
+    grey3: PaletteOptions['primary'];
+    customBlack: Palette['primary'];
   }
   interface PaletteOptions {
-    customGrey?: PaletteOptions["primary"];
-    grey3?: PaletteOptions["primary"];
+    customGrey?: PaletteOptions['primary'];
+    grey3?: PaletteOptions['primary'];
+    customBlack?: Palette['primary'];
   }
 }
 
-declare module "@mui/material/SvgIcon" {
+declare module '@mui/material/SvgIcon' {
   interface SvgIconPropsColorOverrides {
     customGrey: true;
+    customBlack: true;
   }
 }
 
@@ -32,7 +36,7 @@ const theme = createTheme({
     primary: {
       main: '#2D00D4',
       light: '#F1EEFE',
-      dark: "#375FD4"
+      dark: '#375FD4',
     },
     text: {
       primary: '#3F4842',
@@ -62,6 +66,12 @@ const theme = createTheme({
     customGrey: {
       main: '#C7C7CC',
     },
+    customBlack: {
+      main: '#1E1E1E',
+      light: '',
+      dark: '',
+      contrastText: '',
+    },
     grey3: {
       main: '#ece6f0',
     },
@@ -87,12 +97,17 @@ const theme = createTheme({
     `,
     },
   },
+  components: {
+    MuiButton: {
+      variants: MuiButton,
+    },
+  },
   typography: {
     ...typography,
   },
   shape: {
-    borderRadius: 16
-  }
+    borderRadius: 16,
+  },
 });
 
 export default theme;

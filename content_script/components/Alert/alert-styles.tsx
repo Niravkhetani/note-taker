@@ -6,7 +6,7 @@ const useStyles = makeStyles({ uniqId: 'notes' })((theme) => ({
     display: 'flex',
     alignItems: 'center',
     borderRadius: theme.shape.borderRadius / 2,
-    margin: '12px 0px',
+    margin: '8px 0px',
     height: '32px',
   },
   heading: {
